@@ -21,10 +21,10 @@ static char selfgcolor[]            = "#ffb86c";
 static char selbordercolor[]        = "#282a36";
 static char selbgcolor[]            = "#282a36";
 static char *colors[][3] = {
-       /*               fg           bg           border   */
-       [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
-       [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
- };
+	/*               fg           bg           border   */
+	[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
+	[SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
+};
 
 
 /* tagging */
@@ -64,10 +64,10 @@ static const Layout layouts[] = {
 /* key definitions */
 #define MODKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
+{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
+{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -84,7 +84,7 @@ static const char *brave[]  = { "brave-bin", NULL };
 static const char *passmenu[]  = { "passdmenu.py", NULL };
 static const char *dmenu_bluetooth[]  = { "dmenu_bluetooth", NULL };
 static const char *dkill[]  = { "dkill", NULL };
-static const char *dmenu_wifi[]  = { "/home/hendrik/src/dotfiles/dmenu/dmenu_wifi.py", NULL };
+static const char *dmenu_wifi[]  = { "dmenu_wifi.py", NULL };
 static const char *slock[]  = { "slock", NULL };
 static const char *firefox[]  = { "firefox-bin", NULL };
 static const char *telegram[]  = { "telegram-desktop", NULL };
@@ -94,21 +94,21 @@ static const char *slack[]  = { "slack", NULL };
  * Xresources preferences to load at startup
  */
 ResourcePref resources[] = {
-//		{ "font",               STRING,  &font },
-		{ "dmenufont",          STRING,  &dmenufont },
-		{ "normbgcolor",        STRING,  &normbgcolor },
-		{ "normbordercolor",    STRING,  &normbordercolor },
-		{ "normfgcolor",        STRING,  &normfgcolor },
-		{ "selbgcolor",         STRING,  &selbgcolor },
-		{ "selbordercolor",     STRING,  &selbordercolor },
-		{ "selfgcolor",         STRING,  &selfgcolor },
-		{ "borderpx",          	INTEGER, &borderpx },
-		{ "snap",          		INTEGER, &snap },
-		{ "showbar",          	INTEGER, &showbar },
-		{ "topbar",          	INTEGER, &topbar },
-		{ "nmaster",          	INTEGER, &nmaster },
-		{ "resizehints",       	INTEGER, &resizehints },
-		{ "mfact",      	 	FLOAT,   &mfact },
+	//		{ "font",               STRING,  &font },
+	{ "dmenufont",          STRING,  &dmenufont },
+	{ "normbgcolor",        STRING,  &normbgcolor },
+	{ "normbordercolor",    STRING,  &normbordercolor },
+	{ "normfgcolor",        STRING,  &normfgcolor },
+	{ "selbgcolor",         STRING,  &selbgcolor },
+	{ "selbordercolor",     STRING,  &selbordercolor },
+	{ "selfgcolor",         STRING,  &selfgcolor },
+	{ "borderpx",          	INTEGER, &borderpx },
+	{ "snap",          		INTEGER, &snap },
+	{ "showbar",          	INTEGER, &showbar },
+	{ "topbar",          	INTEGER, &topbar },
+	{ "nmaster",          	INTEGER, &nmaster },
+	{ "resizehints",       	INTEGER, &resizehints },
+	{ "mfact",      	 	FLOAT,   &mfact },
 };
 
 /** Function to shift the current view to the left/right
@@ -118,17 +118,17 @@ ResourcePref resources[] = {
  */
 void
 shiftview(const Arg *arg) {
-        Arg shifted;
+	Arg shifted;
 
-        if(arg->i > 0) // left circular shift
-                shifted.ui = (selmon->tagset[selmon->seltags] << arg->i)
-                   | (selmon->tagset[selmon->seltags] >> (LENGTH(tags) - arg->i));
+	if(arg->i > 0) // left circular shift
+		shifted.ui = (selmon->tagset[selmon->seltags] << arg->i)
+			| (selmon->tagset[selmon->seltags] >> (LENGTH(tags) - arg->i));
 
-        else // right circular shift
-                shifted.ui = selmon->tagset[selmon->seltags] >> (- arg->i)
-                   | selmon->tagset[selmon->seltags] << (LENGTH(tags) + arg->i);
+	else // right circular shift
+		shifted.ui = selmon->tagset[selmon->seltags] >> (- arg->i)
+			| selmon->tagset[selmon->seltags] << (LENGTH(tags) + arg->i);
 
-        view(&shifted);
+	view(&shifted);
 }
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
@@ -145,6 +145,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_b, spawn,          {.v = dmenu_bluetooth } },
 	{ MODKEY|ShiftMask,             XK_w, spawn,           {.v = dmenu_wifi }},
 	{ MODKEY,			XK_n,		spawn,		SHCMD(TERMINAL " -e vim -c VimwikiIndex") },
+	{ MODKEY|ShiftMask,			XK_d,		spawn,		SHCMD(TERMINAL "-e vim -c VimwikiMakeDiaryNote") },
 	{ MODKEY|ShiftMask,			XK_t,		spawn,		SHCMD(TERMINAL " -e vim /home/hendrik/Nextcloud/Notes/todo.md") },
 	{ MODKEY|ShiftMask,			XK_k,		spawn,		{.v = dkill } },
 	{ MODKEY|ShiftMask,			XK_a,		spawn,		SHCMD(TERMINAL " -e vim ~/docsrc/shortcuts/shortcuts.md && pandoc ~/docsrc/shortcuts/shortcuts.md -o ~/docsrc/shortcuts/shortcuts.pdf") },
@@ -167,8 +168,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	// { MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+	// { MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
@@ -187,15 +188,15 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Right, shiftview,         {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_Left, shiftview,         {.i = -1 } },
 	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+		TAGKEYS(                        XK_2,                      1)
+		TAGKEYS(                        XK_3,                      2)
+		TAGKEYS(                        XK_4,                      3)
+		TAGKEYS(                        XK_5,                      4)
+		TAGKEYS(                        XK_6,                      5)
+		TAGKEYS(                        XK_7,                      6)
+		TAGKEYS(                        XK_8,                      7)
+		TAGKEYS(                        XK_9,                      8)
+		{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 
 /* button definitions */
