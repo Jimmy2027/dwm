@@ -43,9 +43,12 @@ static const Rule rules[] = {
 	{"St", NULL, NULL, 0, 0, 1, 0, -1},
 	{"Brave-browser", NULL, NULL, 1 << 1, 0, 1, -1},
 	{"brave-browser", NULL, NULL, 1 << 1, 0, 1, -1},
-	{"Thunderbird", NULL, NULL, 1 << 4, 0, 1, -1},
+	{"thunderbird", NULL, NULL, 1 << 4, 0, 1, -1},
 	{"Spotify", NULL, NULL, 1 << 5, 0, 1, -1},
 	{"Zotero", NULL, NULL, 1 << 6, 0, 1, -1},
+	{"nextcloud", NULL, NULL, 1 << 6, 0, 1, -1},
+	{"telegram-desktop", NULL, NULL, 1 << 7, 0, 1, -1},
+	{"whatsapp-for-linux", NULL, NULL, 1 << 7, 0, 1, -1},
 };
 
 /* layout(s) */
