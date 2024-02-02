@@ -85,7 +85,7 @@ static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, NULL};
 // static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char *termcmd[] = {"st", "-f", "monospace:size=13", NULL};
 static const char *spotify[] = {"spotify", NULL};
-static const char *brave[] = {"brave-bin", NULL};
+static const char *brave[] = {"$BROWSER", NULL};
 static const char *passmenu[] = {"passdmenu.py", NULL};
 static const char *dmenu_bluetooth[] = {"dmenu_bluetooth", NULL};
 static const char *dkill[] = {"dkill", NULL};
