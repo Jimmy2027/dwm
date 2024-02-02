@@ -1,5 +1,5 @@
 /* See LICENSE file for copyright and license details. */
-
+#include <stdlib.h>
 /* Constants */
 #define TERMINAL "st"
 #define TERMCLASS "St"
@@ -77,6 +77,7 @@ static const Layout layouts[] = {
 		.v = (const char *[]) { "/bin/sh", "-c", cmd, NULL } \
 	}
 
+char *browser = getenv("BROWSER");
 /* commands */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 static char dmenumon[2] = "0";		 /* component of dmenucmd, manipulated in spawn() */
@@ -85,7 +86,7 @@ static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, NULL};
 // static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char *termcmd[] = {"st", "-f", "monospace:size=13", NULL};
 static const char *spotify[] = {"spotify", NULL};
-static const char *brave[] = {"$BROWSER", NULL};
+static const char *brave[] = {browser, NULL};
 static const char *passmenu[] = {"passdmenu.py", NULL};
 static const char *dmenu_bluetooth[] = {"dmenu_bluetooth", NULL};
 static const char *dkill[] = {"dkill", NULL};
