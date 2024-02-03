@@ -77,7 +77,7 @@ static const Layout layouts[] = {
 		.v = (const char *[]) { "/bin/sh", "-c", cmd, NULL } \
 	}
 
-char *browser = getenv("BROWSER");
+
 /* commands */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 static char dmenumon[2] = "0";		 /* component of dmenucmd, manipulated in spawn() */
@@ -86,7 +86,7 @@ static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, NULL};
 // static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char *termcmd[] = {"st", "-f", "monospace:size=13", NULL};
 static const char *spotify[] = {"spotify", NULL};
-static const char *brave[] = {browser, NULL};
+static const char *brave[] = {"brave-browser-stable", NULL};
 static const char *passmenu[] = {"passdmenu.py", NULL};
 static const char *dmenu_bluetooth[] = {"dmenu_bluetooth", NULL};
 static const char *dkill[] = {"dkill", NULL};
@@ -172,9 +172,9 @@ static Key keys[] = {
 	{MODKEY | ShiftMask, XK_m, spawn, SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)")},
 	{MODKEY | ShiftMask, XK_Up, spawn, SHCMD("xbacklight -inc 25")},
 	{MODKEY | ShiftMask, XK_Down, spawn, SHCMD("xbacklight -dec 25")},
-	{MODKEY, XK_F5, spawn, SHCMD("spt playback --toggle")},
-	{MODKEY, XK_F4, spawn, SHCMD("spt playback --previous")},
-	{MODKEY, XK_F6, spawn, SHCMD("spt playback --next")},
+	{MODKEY, XK_F5, spawn, SHCMD("spt playback --toggle; kill -44 $(pidof dwmblocks)")},
+	{MODKEY, XK_F4, spawn, SHCMD("spt playback --previous; kill -44 $(pidof dwmblocks)")},
+	{MODKEY, XK_F6, spawn, SHCMD("spt playback --next; kill -44 $(pidof dwmblocks)")},
 	{MODKEY, XK_b, togglebar, {0}},
 	{MODKEY, XK_j, focusstack, {.i = +1}},
 	{MODKEY, XK_k, focusstack, {.i = -1}},
