@@ -12,7 +12,7 @@ static int topbar = 1;			  /* 0 means bottom bar */
 static int swallowfloating = 0;	  /* 1 means swallow floating windows by default */
 // static char font[]            = "monospace:size=10";
 static char dmenufont[] = "monospace:size=10";
-static char *fonts[] = {"monospace:size=10", "NotoColorEmoji:pixelsize=10:antialias=true:autohint=true"};
+static const char *fonts[] = {"monospace:size=10", "NotoColorEmoji:pixelsize=10:antialias=true:autohint=true"};
 // static const char *fonts[]          = { font };
 static char normbgcolor[] = "#000000";
 static char normbordercolor[] = "#ffb86c";
