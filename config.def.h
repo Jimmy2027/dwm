@@ -153,7 +153,7 @@ static Key keys[] = {
 	{MODKEY | ShiftMask, XK_w, spawn, {.v = dmenu_wifi}},
 	{MODKEY, XK_n, spawn, SHCMD(TERMINAL " -e vim -c VimwikiIndex")},
 	{MODKEY | ShiftMask, XK_d, spawn, SHCMD(TERMINAL "-e vim -c VimwikiMakeDiaryNote")},
-	{MODKEY | ShiftMask, XK_t, spawn, SHCMD("screenman")},
+	{MODKEY | ShiftMask, XK_t, spawn, SHCMD("screenman --log-file ~/.local/logs/screenman.log")},
 	{MODKEY | ShiftMask, XK_k, spawn, {.v = dkill}},
 	{MODKEY | ShiftMask, XK_a, spawn, SHCMD(TERMINAL " -e vim ~/docsrc/shortcuts/shortcuts.md && pandoc ~/docsrc/shortcuts/shortcuts.md -o ~/docsrc/shortcuts/shortcuts.pdf")},
 	{MODKEY | ShiftMask, XK_s, spawn, SHCMD("zathura ~/docsrc/shortcuts/shortcuts.pdf")},
